@@ -64,6 +64,9 @@ header.scrolled .logo{
   text-align: center;
   padding: 0 20px;
 }
+.tagline{
+  color: white;
+}
 
 .hero-content h1 {
   font-size: 2.5rem;
@@ -132,6 +135,59 @@ p{
 .product img{
   width: 700px;
 }
+.testimonials {
+      background-color: #0b0b2a;
+      color: white;
+      padding: 100px 40px;
+      text-align: center;
+    }
+
+    .testimonials h1 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #21c997;
+      letter-spacing: 1px;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .testimonial {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 30px 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .testimonial img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .testimonial h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .testimonial p {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
 .footer {
   background-color: #0b0b2a;
   color: white;
@@ -175,7 +231,7 @@ p{
 }
 .contact-section {
   background: linear-gradient(rgba(0, 0, 50, 0.6), rgba(0, 0, 50, 0.6)),
-              url('contact-bg.jpg') center/cover no-repeat;
+              url('home-bg.jpg') center/cover no-repeat;
   color: white;
   min-height: 100vh;
   display: flex;
@@ -307,6 +363,121 @@ p{
   font-size: 1rem;
 }
 
+.sub-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+    background: linear-gradient(rgba(0,0,50,0.6), rgba(0,0,50,0.6)),
+              url('home-bg.jpg') center/cover no-repeat;
+              background-attachment: fixed;
+              background-repeat: no-repeat;
+              background-size: cover;
+}
+.sub-section h1{
+  display: flex;
+  justify-content: center;
+  color: white;
+  align-items: center;
+   padding: 30px;
+}
+.sub-section-main{
+  display: grid;
+  width: 100%;
+  gap: 30px;
+}
+.sub-cards-section{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+}
+.sub-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  background-color: white;
+  border-radius: 4px;
+  gap: 12px;
+  padding: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.buy-sub{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.buy-sub button{
+  width: 40%;
+  height: 60px;
+  background-color: rgb(116, 219, 116);
+  border-radius: 15px;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+}
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(4px);
+}
+.overlay div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  width: 500px;
+  height: 500px;
+  background-color: rgb(175, 216, 175);
+}
+.overlay div input{
+  width: 50%;
+  height: 50px;
+}
+.overlay div input::placeholder{
+  font-family: "Manrope";
+  font-size: 1rem;
+  padding: 10px;
+}
+.form-register-close{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid red;
+}
+#sub-title{
+  font-size: 3rem;
+}
+.sub-card span{
+  border-bottom: 1px solid grey;
+}
+.sub-card h3, p{
+  color: rgb(99, 96, 96);
+    font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;;
+  font-style: normal;
+}
+.sub-card h3{
+  font-size: 4rem;
+  font-weight: normal;
+}
+.sub-card p{
+  font-size: 1.6rem;
+}
+
 
 .team-grid {
   display: grid;
@@ -314,6 +485,10 @@ p{
   gap: 40px;
   width: 100%;
 }
+.burger-menu {
+  display: none;
+}
+.mobile-nav{display: none;}
 
 .team-member {
   background: white;
@@ -347,7 +522,41 @@ p{
   color: gray;
   font-size: 0.95rem;
 }
+.container{
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+}
+.card{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  
+}
+.card img{
+  width: 400px;
+}
 
+
+@media (min-width: 1440px) {
+  .sub-cards-section,
+  .testimonial-grid,
+  .team-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1200px) {
+  .sub-cards-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sub-card {
+    width: 100%;
+    max-width: 420px;
+  }
+}
     @media (max-width: 1080px) {
       header {
         padding: 30px 40px;
@@ -390,6 +599,9 @@ p{
   .team-grid {
     grid-template-columns: 1fr 1fr;
   }
+  .testimonial-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
     @media (max-width: 768px) {
       header {
@@ -409,6 +621,14 @@ p{
         width: 200px;
         padding: 12px 15px;
       }
+        .sub-cards-section {
+    grid-template-columns: 1fr;
+  }
+
+  .sub-section {
+    height: auto;
+    padding: 80px 20px;
+  }
 
       .email-box button {
         padding: 0 20px;
@@ -456,12 +676,80 @@ p{
   .about-section {
     padding: 80px 30px;
   }
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials h1 {
+    font-size: 2rem;
+  }
 }
 
     @media (max-width: 480px) {
       header {
         padding: 15px;
+        display: flex;
+        flex-direction: row;
       }
+      
+
+      .burger-menu {
+        width: 28px;
+        height: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-right: 20px;
+      cursor: pointer;
+    }
+    .sub-card {
+    max-width: 100%;
+    padding: 25px;
+  }
+
+  .sub-card h3 {
+    font-size: 2.5rem;
+  }
+
+  .sub-card p {
+    font-size: 1.2rem;
+  }
+    nav{
+      display: none;
+    }
+
+      .burger-menu span {
+        height: 3px;
+        width: 100%;
+        background-color: rgb(172, 25, 25);
+      border-radius: 2px;
+    }
+    
+  .mobile-nav {
+   position: fixed;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background-color: #c35555b2;
+    display: flex;      
+    flex-direction: column;
+      gap: 20px;
+    padding: 0 20px;
+    height: 0;                
+    overflow: hidden;        
+    transition: height 0.3s ease, padding 0.3s ease;
+    z-index: 2;
+  }
+
+  .mobile-nav.open {
+    height: 200px;           
+    padding: 20px;
+  }
+
+  .mobile-nav a {
+    color: white;
+    font-size: 18px;
+  }
 
       .logo {
         font-size: 1.5em;
