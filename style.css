@@ -52,7 +52,7 @@ header.scrolled .logo{
 .hero {
   height: 100vh;
   background: linear-gradient(rgba(0,0,50,0.6), rgba(0,0,50,0.6)),
-              url('home-bg.jpg') center/cover no-repeat;
+              url('https://res.cloudinary.com/dxdn6hspb/image/upload/v1769084472/home-bg_tgollv.jpg') center/cover no-repeat;
               background-attachment: fixed;
               background-repeat: no-repeat;
               background-size: cover;
@@ -433,30 +433,63 @@ p{
     z-index: 2000;
     backdrop-filter: blur(4px);
 }
-.overlay div{
+.form-register{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   gap: 25px;
   width: 500px;
   height: 500px;
+  padding: 30px;
   background-color: rgb(175, 216, 175);
+  border-radius: 4px;
 }
-.overlay div input{
-  width: 50%;
+.registering{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.registering input{
   height: 50px;
+  width: 80%;
+  border: none;
+  border-radius: 4px;
 }
-.overlay div input::placeholder{
+.registering input::placeholder{
   font-family: "Manrope";
   font-size: 1rem;
   padding: 10px;
 }
+
+.registering button{
+  width: 300px;
+  height: 50px;
+  background-color: #1c6bac;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
 .form-register-close{
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   width: 100%;
-  border: 1px solid red;
+  margin-bottom: 100px;
+}
+.form-register-close svg{
+  position: absolute;
+  top: 0;
+  right: 10px;
+  cursor: pointer;
+}
+.form-register-close h1{
+  color: black;
 }
 #sub-title{
   font-size: 3rem;
@@ -723,6 +756,10 @@ p{
         width: 100%;
         background-color: rgb(172, 25, 25);
       border-radius: 2px;
+    }
+    .sub-cards-section{
+      display: flex;
+      flex-direction: column;
     }
     
   .mobile-nav {

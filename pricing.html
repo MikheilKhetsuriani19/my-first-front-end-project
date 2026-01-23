@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft Landing</title>
+    <title>Soft Landing/Pricing</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +35,8 @@
         <span class="contact">Say hello - info@soft.co</span>
         <nav class="mobile-nav">
             <a href="index.html">Home</a>
-            <a href="#rates">Rates</a>
-            <a href="#app">Our app</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="aboutus.html">About Us</a>
         </nav>
     </header>
 
@@ -93,22 +93,23 @@
                     </div>
                 </div>
             </div>
-            <div class="overlay">
+            <form class="overlay">
                 <div class="form-register">
                     <div class="form-register-close">
                         <h1>Register</h1>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="m12 10.587l4.95-4.95l1.414 1.414l-4.95 4.95l4.95 4.95l-1.415 1.414l-4.95-4.95l-4.949 4.95l-1.414-1.415l4.95-4.95l-4.95-4.95L7.05 5.638z" />
                         </svg>
                     </div>
-                    <div>
-                        <input type="text" placeholder="id">
-                        <input type="text" placeholder="email">
-                        <input type="text" placeholder="password">
+                    <div class="registering">
+                        <input type="text" placeholder="id" required value="01223213123231">
+                        <input type="email" placeholder="email" required value="mikheil.khetsuriani.2@btu.edu.ge">
+                        <input type="password" placeholder="password" required value="2312dmdsadadw">
+                        <button type="submit">Sign Up</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </main>
     </section>
     <script src="script.js"></script>
