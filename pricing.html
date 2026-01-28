@@ -15,6 +15,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Irish+Grover&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@200..800&display=swap"
         rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -22,17 +28,16 @@
         <div class="logo">Soft Landing</div>
         <nav>
             <a href="index.html">Home</a>
-            <a href="#">Features</a>
             <a href="aboutus.html">About us</a>
-            <a href="#">Pricing</a>
-            <a href="#">Contact</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="admin.html" target="_blank" class="admin-panel-nav">Admin Panel</a>
         </nav>
         <div class="burger-menu">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <span class="contact">Say hello - info@soft.co</span>
+        <span class="contact"><button>Sign in</button> <button class="logout-btn">Logout</button></span>
         <nav class="mobile-nav">
             <a href="index.html">Home</a>
             <a href="pricing.html">Pricing</a>
@@ -44,7 +49,7 @@
         <main class="sub-section-main">
             <h1 id="sub-title">Choose Any Plan</h1>
             <div class="sub-cards-section">
-                <div class="sub-card">
+                <div class="sub-card reveal-up">
                     <h3>Student</h3>
                     <span></span>
                     <p>20 Responsive Designs</p>
@@ -60,7 +65,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="sub-card">
+                <div class="sub-card reveal-up">
                     <h3>Business</h3>
                     <span></span>
                     <p>50 Responsive Designs</p>
@@ -76,7 +81,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="sub-card">
+                <div class="sub-card reveal-up">
                     <h3>Professional</h3>
                     <span></span>
                     <p>100 Responsive Designs</p>
@@ -103,16 +108,87 @@
                         </svg>
                     </div>
                     <div class="registering">
-                        <input type="text" placeholder="id" required value="01223213123231">
-                        <input type="email" placeholder="email" required value="mikheil.khetsuriani.2@btu.edu.ge">
-                        <input type="password" placeholder="password" required value="2312dmdsadadw">
+                        <input type="text" placeholder="id" required value="">
+                        <input type="email" placeholder="email" required value="">
+                        <input type="password" class="passwordInput" placeholder="password" required
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
+                            title="Password must be at least 8 characters and include uppercase, lowercase, number, and special character">
                         <button type="submit">Sign Up</button>
+                    </div>
+                </div>
+            </form>
+            <form class="overlay1">
+                <div class="form-register1">
+                    <div class="form-register-close1">
+                        <h1>Log in as Admin</h1>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="m12 10.587l4.95-4.95l1.414 1.414l-4.95 4.95l4.95 4.95l-1.415 1.414l-4.95-4.95l-4.949 4.95l-1.414-1.415l4.95-4.95l-4.95-4.95L7.05 5.638z" />
+                        </svg>
+                    </div>
+                    <div class="registering1">
+                        <input type="email" placeholder="email" required value="admin@softlanding.com">
+                        <input type="password" class="passwordInput" placeholder="password" required
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
+                            title="Password must be at least 8 characters and include uppercase, lowercase, number, and special character" value="Admin123$">
+                        <button type="submit">Log in</button>
                     </div>
                 </div>
             </form>
         </main>
     </section>
     <script src="script.js"></script>
+    <script>
+        const passwordInput = document.querySelector(".passwordInput")
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+        passwordInput.addEventListener("keyup", () => {
+            passwordInput.value
+        })
+
+        signUpForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const inputs = document.querySelectorAll(".registering input")
+            let newUser = {
+                id: inputs[0].value,
+                email: inputs[1].value,
+                password: inputs[2].value
+            };
+            try {
+                const resp = await fetch(myAPI, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json"
+
+                    },
+                    body: JSON.stringify(newUser)
+                })
+
+                const result = await resp.json();
+                if (!resp.ok) {
+                    console.log(result.error)
+                }
+                else {
+                    Swal.fire({
+                        title: "U're registered",
+                        icon: "success",
+                        draggable: true
+                    });
+                    console.log(result)
+                    overlay.style.display = "none";
+                }
+
+            } catch (error) {
+                console.error(error);
+            }
+        })
+
+        closeBtn.addEventListener("click", hideSignup);
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) hideSignup();
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

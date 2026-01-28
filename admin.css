@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, #1a0033, #050010);
+    color: #e6d9ff;
+}
+
+/* TOP BAR */
+.topbar {
+    background: linear-gradient(90deg, #6a00ff, #00eaff);
+    padding: 20px 40px;
+    box-shadow: 0 0 25px #6a00ff;
+}
+
+.topbar h1 {
+    font-size: 28px;
+}
+
+.subtitle {
+    color: #0ff;
+    font-size: 14px;
+}
+
+/* MAIN */
+.container {
+    width: 1200px;
+    margin: 40px auto;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    color: #b266ff;
+    text-shadow: 0 0 10px #6a00ff;
+}
+
+#userFilter {
+    width: 300px;
+    padding: 10px;
+    background: #120022;
+    border: 1px solid #6a00ff;
+    color: #0ff;
+    box-shadow: 0 0 10px #6a00ff;
+}
+
+
+.user-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.user-card {
+    background: linear-gradient(145deg, #1b0033, #0b001a);
+    border: 1px solid #6a00ff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(106, 0, 255, 0.6);
+    transition: 0.3s;
+}
+
+.user-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px #00eaff;
+}
+
+.user-card img {
+    width: 100%;
+    height: 300px;   
+    object-fit: cover;
+    margin-bottom: 12px;
+    border-radius: 6px;
+}
+
+
+/* ACTIONS */
+.actions {
+    margin-top: 10px;
+}
+
+.actions button {
+    background: transparent;
+    border: 1px solid #00eaff;
+    color: #0ff;
+    font-size: 16px;
+    padding: 6px 10px;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00eaff;
+}
+
+.actions button:hover {
+    background: #00eaff;
+    color: #050010;
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 50px;
+    background: #080014;
+    border-top: 1px solid #6a00ff;
+}
+
+.footer-content {
+    width: 1200px;
+    margin: auto;
+    padding: 25px;
+    text-align: center;
+}
+
+.footer-logo {
+    color: #b266ff;
+    text-shadow: 0 0 10px #6a00ff;
+}
+
+.footer-socials a {
+    margin: 0 10px;
+    color: #00eaff;
+}
+
+.footer-copy {
+    font-size: 12px;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+
+.admin-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.admin-controls button {
+    background: #1a1a2e;
+    border: 1px solid #2f2fff;
+    color: #b8b8ff;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-bottom: 20px;
+}
+
+.admin-controls button:hover {
+    border-color: #4fc3ff;
+    color: #4fc3ff;
+}
+
+
+#statusText {
+    margin: 10px 0 20px;
+    font-size: 13px;
+    color: #7aa2ff;
+}
+
+
+.user-card {
+    position: relative;
+}
+
+.selectUser {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    accent-color: #4fc3ff;
+    cursor: pointer;
+}
+
+
+.bulk-delete {
+    background: #2a002a;
+    border: 1px solid #ff4f7a;
+    color: #ff9bb5;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.bulk-delete:hover {
+    background: #ff4f7a;
+    color: #0f0f1a;
+}
+

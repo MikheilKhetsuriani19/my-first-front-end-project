@@ -17,22 +17,21 @@
         <div class="logo">Soft Landing</div>
         <nav>
             <a href="index.html">Home</a>
-            <a href="#">Features</a>
             <a href="aboutus.html">About us</a>
             <a href="pricing.html">Pricing</a>
-            <a href="#">Contact</a>
+            <a href="admin.html" target="_blank" class="admin-panel-nav">Admin Panel</a>
         </nav>
         <div class="burger-menu">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <span class="contact">Say hello - info@soft.co</span>
-            <nav class="mobile-nav">
-                <a href="index.html">Home</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="aboutus.html">About us</a>
-            </nav>
+        <span class="contact"><button>Sign in</button> <button class="logout-btn">Logout</button></span>
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="aboutus.html">About us</a>
+        </nav>
     </header>
     <section class="about-section">
         <div class="about-container">
@@ -46,18 +45,21 @@
             </div>
 
             <div class="team-grid">
-                <div class="team-member">
-                    <img src="https://res.cloudinary.com/dxdn6hspb/image/upload/v1769084492/team-image1_kt86wm.jpg" alt="Team Member 1">
+                <div class="team-member reveal-up">
+                    <img src="https://res.cloudinary.com/dxdn6hspb/image/upload/v1769084492/team-image1_kt86wm.jpg"
+                        alt="Team Member 1">
                     <h3>James Brown</h3>
                     <p>Lead Designer</p>
                 </div>
-                <div class="team-member">
-                    <img src="https://res.cloudinary.com/dxdn6hspb/image/upload/v1769084493/team-image2_d5vpaq.jpg" alt="Team Member 2">
+                <div class="team-member reveal-up">
+                    <img src="https://res.cloudinary.com/dxdn6hspb/image/upload/v1769084493/team-image2_d5vpaq.jpg"
+                        alt="Team Member 2">
                     <h3>Sophia Blue</h3>
                     <p>Frontend Developer</p>
                 </div>
-                <div class="team-member">
-                    <img src="https://res.cloudinary.com/dxdn6hspb/image/upload/v1769084483/team-image3_swge3o.jpg" alt="Team Member 3">
+                <div class="team-member reveal-up">
+                    <img src="https://res.cloudinary.com/dxdn6hspb/image/upload/v1769084483/team-image3_swge3o.jpg"
+                        alt="Team Member 3">
                     <h3>Freddie Jhonson</h3>
                     <p>Project Manager</p>
                 </div>
@@ -86,7 +88,26 @@
             </form>
         </div>
     </section>
-    <div class="container"></div>
+
+    <form class="overlay1">
+        <div class="form-register1">
+            <div class="form-register-close1">
+                <h1>Log in as Admin</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="m12 10.587l4.95-4.95l1.414 1.414l-4.95 4.95l4.95 4.95l-1.415 1.414l-4.95-4.95l-4.949 4.95l-1.414-1.415l4.95-4.95l-4.95-4.95L7.05 5.638z" />
+                </svg>
+            </div>
+            <div class="registering1">
+                <input type="email" placeholder="email" required value="admin@softlanding.com">
+                <input type="password" class="passwordInput" placeholder="password" required
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
+                    title="Password must be at least 8 characters and include uppercase, lowercase, number, and special character" value="Admin123$">
+                <button type="submit">Log in</button>
+            </div>
+        </div>
+    </form>
+
 
 
     <footer class="footer">
@@ -118,6 +139,8 @@
 
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

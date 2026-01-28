@@ -5,6 +5,33 @@
 }
 
 
+button:hover {
+    box-shadow: 0 0 15px #0ff, 0 0 30px rgba(0, 255, 255, 0.5);
+    background: #0ff;
+    color: #111;
+    transform: translateY(-3px) scale(1.05);
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+
+button:active {
+    transform: translateY(0) scale(0.98);
+}
+input:focus {
+  box-shadow:
+    0 0 10px #0ff,
+    0 0 25px #0ff,
+    inset 0 0 15px #0ff;
+}
+
+textarea:focus {
+  box-shadow:
+    0 0 10px #0ff,
+    0 0 25px #0ff,
+    inset 0 0 15px #0ff;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -46,6 +73,20 @@ header.scrolled a,
 header.scrolled .contact {
   color: #333;
 }
+
+.contact button{
+  background-color: rgb(177, 28, 210);
+  color: white;
+  width: 120px;
+  height: 50px;
+  border-radius: 4px;
+  font-family: 'Times New Roman', Times, serif;
+  border: none;
+  font-size: 1.2rem;
+
+}
+
+
 header.scrolled .logo{
   color: #333;
 }
@@ -193,7 +234,13 @@ p{
   color: white;
   text-align: center;
   padding: 50px 20px;
-  margin-top: 60px;
+  margin-top: 20px;
+}
+.faq h1{
+  color:  #21c997;
+}
+.accordion button{
+  font-size: 1.3rem;
 }
 
 .footer-content {
@@ -249,6 +296,18 @@ p{
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
   max-width: 600px;
   width: 100%;
+}
+.deleteButton:hover{
+      box-shadow:
+    0 0 10px rgb(229, 132, 139),
+    0 0 20px rgb(229, 132, 139),
+    0 0 40px rgb(229, 132, 139);
+  background: rgb(229, 132, 139);
+  color: #111;
+}
+
+.user-card img{
+  height: 80%;
 }
 
 .contact-container h1 {
@@ -371,7 +430,7 @@ p{
   width: 100%;
   background-color: black;
     background: linear-gradient(rgba(0,0,50,0.6), rgba(0,0,50,0.6)),
-              url('home-bg.jpg') center/cover no-repeat;
+              url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLpH0o5AS5zpSgJ9Fe3y6p-sVE655D6lC8pQ&s') center/cover no-repeat;
               background-attachment: fixed;
               background-repeat: no-repeat;
               background-size: cover;
@@ -393,17 +452,42 @@ p{
   justify-content: space-between;
   gap: 30px;
   width: 100%;
+  overflow: hidden;
 }
 .sub-card{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
+  max-width: 350px;
+  flex-shrink: 0;
   background-color: white;
   border-radius: 4px;
   gap: 12px;
   padding: 30px;
+  transition: 0.5s;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.logout-btn {
+  display: none;
+  background: rgb(0, 70, 128) !important;
+  border: 1px solid #0ff !important;
+  color: #0ff !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-size: 0.95rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.logout-btn:hover {
+  background: #0ff !important;
+  color: #111 !important;
+  box-shadow: 0 0 12px #0ff !important;
+}
+
+.sub-card:hover{
+  transform: translateY(-2%);
 }
 .buy-sub{
   display: flex;
@@ -420,7 +504,7 @@ p{
   border: none;
   cursor: pointer;
 }
-.overlay{
+.overlay, .overlay1{
     position: fixed;
     top: 0;
     left: 0;
@@ -430,10 +514,11 @@ p{
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    z-index: 1;
     backdrop-filter: blur(4px);
+    transition: 0.3s;
 }
-.form-register{
+.form-register, .form-register1{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -445,8 +530,19 @@ p{
   padding: 30px;
   background-color: rgb(175, 216, 175);
   border-radius: 4px;
+  background-image: url(https://img.freepik.com/free-photo/office-desk-workspace-bright-color-yellow-background_169016-38713.jpg?semt=ais_hybrid&w=740&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.registering{
+
+.form-register1{
+  background-image: url(https://t3.ftcdn.net/jpg/08/68/51/04/360_F_868510427_vsvN67LV1zSmLMyXMOFG05tRCmTAj1xL.jpg);
+}
+.form-register-close1 h1{
+  color: #0ff;
+}
+
+.registering, .registering1{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -454,19 +550,21 @@ p{
   gap: 10px;
   width: 100%;
 }
-.registering input{
+.registering input, .registering1 input{
   height: 50px;
   width: 80%;
   border: none;
   border-radius: 4px;
+  padding: 10px;
 }
-.registering input::placeholder{
+.registering input::placeholder, .registering1 input::placeholder{
   font-family: "Manrope";
   font-size: 1rem;
   padding: 10px;
 }
 
-.registering button{
+
+.registering button, .registering1 button{
   width: 300px;
   height: 50px;
   background-color: #1c6bac;
@@ -475,14 +573,14 @@ p{
   border: none;
   font-size: 1rem;
 }
-.form-register-close{
+.form-register-close, .form-register-close1{
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
   margin-bottom: 100px;
 }
-.form-register-close svg{
+.form-register-close svg, .form-register-close1 svg{
   position: absolute;
   top: 0;
   right: 10px;
@@ -570,6 +668,94 @@ p{
 .card img{
   width: 400px;
 }
+.user-section {
+  padding: 50px 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+  background-image: url(https://img.freepik.com/free-vector/gradient-abstract-wireframe-background_23-2149009903.jpg?semt=ais_hybrid&w=740&q=80);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.user-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #cdbbbb;
+}
+
+#userFilter {
+  padding: 10px 15px;
+  width: 300px;
+  max-width: 90%;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.user-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px;
+  width: 100%;
+  gap: 10px;
+  max-width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.user-card button{
+  width: 40px;
+  height: 40px;
+}
+.user-card div{
+  display: flex;
+  justify-content: space-between;
+}
+.user-card:hover {
+  transform: translateY(-5px);
+}
+.faq{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-color: whitesmoke;
+  gap: 50px;
+}
+.accordion{
+  width: 60%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  
+}
+.admin-panel-nav{
+  display: none;
+}
+
+.user-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #1c6bac;
+}
+.user-card img{
+  width: 100%;
+}
+
+.user-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
 
 
 @media (min-width: 1440px) {
@@ -582,12 +768,13 @@ p{
 }
 @media (max-width: 1200px) {
   .sub-cards-section {
-    grid-template-columns: repeat(2, 1fr);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 
   .sub-card {
-    width: 100%;
-    max-width: 420px;
+    max-width: 45%;
   }
 }
     @media (max-width: 1080px) {
@@ -636,6 +823,30 @@ p{
     grid-template-columns: 1fr 1fr;
   }
 }
+
+
+@media (max-width: 992px) {
+  .sub-cards-section {
+    flex-direction: column;
+    align-items: center;
+  }
+        .sub-section{
+        height: 200vh;
+      }
+      .sub-section-main{
+        width: 80%;
+      }
+
+  .sub-card {
+    max-width: 60%;
+  }
+
+  #sub-title {
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 20px 0;
+  }
+}
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -654,14 +865,39 @@ p{
         width: 200px;
         padding: 12px 15px;
       }
+      
+
         .sub-cards-section {
-    grid-template-columns: 1fr;
+            gap: 15px;
+          width: 100%;
+      }
+      .sub-section{
+        height: auto;
+      }
+
+  .sub-card {
+    width: 80%;
+    padding: 20px;
   }
 
-  .sub-section {
-    height: auto;
-    padding: 80px 20px;
+  .sub-card h3 {
+    font-size: 2.5rem;
   }
+
+  .sub-card p {
+    font-size: 1.2rem;
+  }
+
+  .buy-sub {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .buy-sub button {
+    width: 100%;
+    height: 50px;
+  }
+
 
       .email-box button {
         padding: 0 20px;
@@ -736,7 +972,7 @@ p{
       cursor: pointer;
     }
     .sub-card {
-    max-width: 100%;
+    max-width: 90%;
     padding: 25px;
   }
 
@@ -782,6 +1018,10 @@ p{
     height: 200px;           
     padding: 20px;
   }
+  .faq{
+    width: 100%;
+    height: 80vh;
+  }
 
   .mobile-nav a {
     color: white;
@@ -797,7 +1037,6 @@ p{
         margin: 10px 0;
         font-size: 1rem;
       }
-
       nav {
         text-align: center;
       }
@@ -827,6 +1066,67 @@ p{
         width: 100%;
         padding: 12px;
       }
+
+
+        .sub-section {
+    padding: 60px 15px;
+    height: auto;
+  }
+
+  #sub-title {
+    font-size: 2rem;
+  }
+
+  .sub-cards-section {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .sub-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .sub-card h3 {
+    font-size: 2rem;
+  }
+
+  .sub-card p {
+    font-size: 1rem;
+  }
+
+  .buy-sub {
+    flex-direction: column;
+  }
+
+  .buy-sub button {
+    width: 100%;
+    height: 45px;
+  }
+
+  /* Overlay form */
+  .overlay, .overlay1 {
+    padding: 20px;
+  }
+
+  .form-register, .form-register1 {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .registering input, .registering1 input {
+    width: 100%;
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  .registering button, .registering1 button {
+    width: 100%;
+    height: 45px;
+    font-size: 1rem;
+  }
+
       .product{
         padding: 40px 20px;
         text-align: center;
@@ -844,6 +1144,116 @@ p{
     }
 
 
+    /* --- Unified Animation System --- */
+
+/* 1. Base hidden state for all animated elements */
+.reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-skew-left, .reveal-skew-right {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 2. Specific directional offsets */
+.reveal-up { transform: translateY(50px); }
+.reveal-left { transform: translateX(-60px); }
+.reveal-right { transform: translateX(60px); }
+.reveal-skew-left { transform: translateX(-80px) skewX(-5deg); }
+.reveal-skew-right { transform: translateX(80px) skewX(5deg); }
+
+/* 3. The trigger class (applied by JS) */
+.active-reveal {
+  opacity: 1 !important;
+  transform: translate(0, 0) skewX(0) !important;
+}
+
+/* 4. Mobile Safety: Prevent horizontal overflow */
+@media (max-width: 768px) {
+  .reveal-left, .reveal-right, .reveal-skew-left, .reveal-skew-right {
+    transform: translateY(30px) translateX(0) skewX(0); /* Force vertical movement only */
+  }
+}
+
+/* 5. Micro-interaction: Pulsing button */
+@keyframes pulse-soft {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+.pulse-btn {
+  animation: pulse-soft 2s infinite ease-in-out;
+}
 
 
+/* --- Universal Hover & Interaction System --- */
+
+/* 1. Navigation Link Hovers */
+header nav a, .mobile-nav a {
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #0ff; /* Matches your neon cyan */
+    transition: width 0.3s ease;
+}
+
+header nav a:hover {
+    color: #0ff !important;
+    transform: translateY(-2px);
+}
+
+header nav a:hover::after {
+    width: 100%;
+}
+
+/* 2. Enhanced Card Interactions (Testimonials, Team, Pricing) */
+.testimonial, .team-member, .sub-card, .user-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease !important;
+    border: 1px solid transparent;
+}
+
+.testimonial:hover, .team-member:hover, .sub-card:hover, .user-card:hover {
+    transform: translateY(-12px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.15) !important;
+    border-color: rgba(0, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+/* 3. Image Zoom Effect */
+.product img, .team-member img, .testimonial img, .about-image img {
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.product img:hover, .about-image img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+.team-member:hover img, .testimonial:hover img {
+    transform: scale(1.1) rotate(3deg);
+}
+
+/* 4. Input Field "Focus-Hover" Glow */
+input:hover, textarea:hover {
+    border-color: #0ff;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+/* 5. Footer Social Icon Bounce */
+.footer-socials a svg {
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), color 0.3s ease;
+}
+
+.footer-socials a:hover svg {
+    transform: scale(1.4);
+    color: #0ff;
+}
 

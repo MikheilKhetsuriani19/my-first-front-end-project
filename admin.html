@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <h1>Admin Panel</h1>
+        <span class="subtitle">Soft Landing Management</span>
+    </header>
+
+    <main class="container">
+        <section class="user-section">
+            <div class="section-header">
+                <p id="statusText">Loading users...</p>
+                <h2>Registered Users</h2>
+                <input type="text" id="userFilter" placeholder="Search by email or ID...">
+            </div>
+            <div class="admin-controls">
+                <button id="sortIdAsc">ID ↑</button>
+                <button id="sortIdDesc">ID ↓</button>
+                <button id="sortEmail">Email A–Z</button>
+                <button id="addUser">+ Add User</button>
+            </div>
+            <button class="bulk-delete" onclick="deleteSelectedUsers()">
+                Delete Selected
+            </button>
+
+
+
+            <div class="user-cards" id="userCards"></div>
+        </section>
+    </main>
+    <script>
+        const apiURL = "https://694c24b2da5ddabf00362fc4.mockapi.io/itstep";
+        const userCards = document.getElementById("userCards");
+        const userFilter = document.getElementById("userFilter");
+
+        let usersData = [];
+
+        async function fetchUsers() {
+            try {
+                const response = await fetch(apiURL);
+                usersData = await response.json();
+                usersData.sort((a, b) => Number(a.id) - Number(b.id));
+                displayUsers(usersData);
+            } catch {
+                userCards.innerHTML = "<p>Error loading users</p>";
+            }
+        }
+
+        function displayUsers(users) {
+            if (!users.length) {
+                userCards.innerHTML = "<p>No users found.</p>";
+                return;
+            }
+
+            userCards.innerHTML = users.map(user => `
+                <div class="user-card">
+                    <input type="checkbox" class="selectUser" data-id="${user.id}">
+                    <img src="${user.image}" alt="">
+                    <p><strong>ID:</strong> ${user.id}</p>
+                    <p><strong>Email:</strong> ${user.email || "N/A"}</p>
+                    <div class="actions">
+                        <button onclick="deleteItem('${user.id}', this)">❌</button>
+                        <button onclick="editItem('${user.id}')">🖊️</button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        async function deleteItem(id, btn) {
+            await fetch(`${apiURL}/${id}`, { method: "DELETE" });
+
+            Swal.fire({
+                title: "Are you sure?",
+                icon: "warning",
+                showCancelButton: true
+            }).then(res => {
+                if (res.isConfirmed) {
+                    usersData = usersData.filter(u => u.id !== id);
+                    btn.closest(".user-card").remove();
+                    Swal.fire("Deleted!", "", "success");
+                }
+            });
+        }
+
+        async function editItem(id) {
+            const user = usersData.find(u => u.id === id);
+            if (!user) return;
+
+            const email = prompt("New email:", user.email);
+            const image = prompt("New image URL:", user.image);
+
+            if (email === null || image === null) return;
+
+            const res = await fetch(`${apiURL}/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, image })
+            });
+
+            const saved = await res.json();
+            usersData = usersData.map(u => u.id === id ? saved : u);
+            displayUsers(usersData);
+        }
+
+        userFilter.addEventListener("input", () => {
+            const q = userFilter.value.toLowerCase();
+            displayUsers(usersData.filter(u =>
+                u.id.includes(q) || (u.email && u.email.toLowerCase().includes(q))
+            ));
+        });
+        const statusText = document.getElementById("statusText");
+
+        function updateStatus(text) {
+            statusText.textContent = text;
+        }
+        document.getElementById("sortIdAsc").onclick = () => {
+            usersData.sort((a, b) => Number(a.id) - Number(b.id));
+            displayUsers(usersData);
+        };
+
+        document.getElementById("sortIdDesc").onclick = () => {
+            usersData.sort((a, b) => Number(b.id) - Number(a.id));
+            displayUsers(usersData);
+        };
+
+        document.getElementById("sortEmail").onclick = () => {
+            usersData.sort((a, b) =>
+                (a.email || "").localeCompare(b.email || "")
+            );
+            displayUsers(usersData);
+        };
+
+        document.getElementById("sortIdAsc").onclick = () => {
+            usersData.sort((a, b) => Number(a.id) - Number(b.id));
+            displayUsers(usersData);
+        };
+
+        document.getElementById("sortIdDesc").onclick = () => {
+            usersData.sort((a, b) => Number(b.id) - Number(a.id));
+            displayUsers(usersData);
+        };
+
+        document.getElementById("sortEmail").onclick = () => {
+            usersData.sort((a, b) =>
+                (a.email || "").localeCompare(b.email || "")
+            );
+            displayUsers(usersData);
+        };
+        document.getElementById("addUser").onclick = async () => {
+            const email = prompt("Enter email:");
+            const image = prompt("Enter image URL:");
+
+            if (!email || !image) return;
+
+            const res = await fetch(apiURL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, image })
+            });
+
+            const newUser = await res.json();
+            usersData.push(newUser);
+            displayUsers(usersData);
+            updateStatus("User added successfully");
+        };
+        function deleteSelectedUsers() {
+            const selected = document.querySelectorAll(".selectUser:checked");
+
+            selected.forEach(async checkbox => {
+                const id = checkbox.dataset.id;
+                await fetch(`${apiURL}/${id}`, { method: "DELETE" });
+                usersData = usersData.filter(u => u.id !== id);
+            });
+
+            displayUsers(usersData);
+            updateStatus(`${selected.length} users deleted`);
+        }
+
+
+
+
+
+
+        fetchUsers();
+        updateStatus(`${usersData.length} users loaded`);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>
