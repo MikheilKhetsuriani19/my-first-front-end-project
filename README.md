@@ -1,1 +1,1 @@
-this is my complete as i call it "first" front-end project where i used html + css + javascript + mockapi for data
+This is It service Provider company "soft landing" u can log in as admin to user CRUD methods for deleting, modifiying, and adding users in the API. U can send out form in About us page and get info from other pages.
